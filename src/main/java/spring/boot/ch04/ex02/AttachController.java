@@ -1,4 +1,4 @@
-package spring.boot.ch03.ex03;
+package spring.boot.ch04.ex02;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-@Controller("ch03.ex02")
-@RequestMapping("/ch03/ex03/attach")
+@Controller("ch04.ex02")
+@RequestMapping("/ch04/ex02/attach")
 public class AttachController {
 	@Value("${attachDir}")
 	private String attachDir;
 	
 	@GetMapping
 	public String main() {
-		return "ch03/ex03/attachIn";
+		return "ch04/ex02/attachIn";
 	}
 	
 	@PostMapping @ResponseBody

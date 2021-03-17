@@ -1,12 +1,9 @@
 package spring.boot.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import spring.boot.ch06.ex01.web.MyLoginHandler;
 
@@ -24,6 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginProcessingUrl("/ch06/ex01/login")
 			.usernameParameter("userId")
 			.passwordParameter("userPw")
-			.successHandler(new MyLoginHandler());
+			.successHandler(new MyLoginHandler())
+			.and() // HttpSecurity http 객체를 반환한다.
+		.logout()
+			.logoutUrl("/ch06/ex01/logout")
+			.logoutSuccessUrl("/ch06/ex01/main");
 	}
 }
